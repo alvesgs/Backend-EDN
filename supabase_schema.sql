@@ -1,6 +1,5 @@
 -- ==============================================================================
 -- SCRIPT DE INICIALIZAÇÃO DO BANCO DE DADOS - DOCSAAS MVP (TCC STARTUP XYZ)
--- Execute este script no "SQL Editor" do seu painel do Supabase
 -- ==============================================================================
 
 -- 1. Criação da Tabela de Metadados de Documentos
