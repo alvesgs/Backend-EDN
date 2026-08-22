@@ -1,0 +1,28 @@
+{
+  "name": "docs-saas-backend",
+  "version": "1.0.0",
+  "description": "Backend SaaS para gerenciamento e armazenamento seguro de documentos com isolamento multi-tenant",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test:e2e": "node test-e2e.js"
+  },
+  "keywords": [
+    "saas",
+    "docs",
+    "express",
+    "supabase",
+    "multi-tenant"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {}
+}

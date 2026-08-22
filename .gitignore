@@ -1,0 +1,26 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente (Segredos)
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Arquivos de auxílio e documentação do TCC (PDFs, DOCX, etc.)
+*.pdf
+*.docx
+*.doc
+*.odt
+*.drawio
+*.drawio.*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
