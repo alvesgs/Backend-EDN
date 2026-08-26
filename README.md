@@ -11,27 +11,34 @@ Backend oficial do MVP desenvolvido para o Trabalho de Conclusão de Curso EDN, 
 | **1. Discovery** | Startup XYZ recebe 50.000 docs/mês com retenção perpétua para IA. Dores centrais: Custo de armazenamento e risco de vazamento de dados entre empresas. |
 | **2. Jornada do Cliente** | Login isolado por Tenant -> Geração de Pre-Signed Upload URL -> Upload direto no Storage -> Catálogo restrito à empresa -> Arquivamento automático aos 365 dias -> Exclusão lógica LGPD. |
 | **3. Refinamento Técnico** | JWT com claim `tenantId`, prefixos no Storage `/{tenantId}/{docId}/`, Pre-Signed URLs com expiração (15 min), controle `STANDARD` vs `GLACIER` e soft delete auditável. |
-| **4. Desenho da Solução** | Arquitetura Serverless IaC (CloudFormation) + MVP funcional integrado ao Supabase (Auth, Postgres e Storage). |
-| **5. Construção do MVP** | Backend Node.js / Express 100% autônomo, modular e testável via scripts E2E para comprovação ao vivo na banca. |
+| **4. Desenho da Solução** | Arquitetura Serverless IaC (CloudFormation) + MVP funcional integrado ao Supabase (Auth, Postgres e Storage), complementado por uma interface SPA (Single Page Application). |
+| **5. Construção do MVP** | Backend Node.js / Express 100% autônomo, modular e testável via scripts E2E para comprovação ao vivo na banca e também com interface React para comprovação interativa. |
 
 ---
 
 ## 🏗️ Estrutura de Arquivos
 
 ```text
-docs-saas-backend/
-├── src/
-│   ├── config/
-│   │   └── supabase.js             # Inicialização do cliente Supabase
-│   ├── middlewares/
-│   │   └── auth.js                 # Middleware de validação JWT e extração de Tenant
-│   ├── controllers/
-│   │   ├── authController.js       # Registro e login com tenantId
-│   │   └── documentController.js   # URLs assinadas, isolamento, LGPD e Glacier
-│   ├── routes/
-│   │   ├── authRoutes.js           # /api/auth (register, login, me)
-│   │   └── documentRoutes.js       # /api/documents (CRUD e simulações)
-│   └── app.js                      # Configuração do Express e Health Check
+docs-saas/
+├── backend/                        # API Node.js & Express
+│       ├── src/
+│       ├── config/
+│       │   └── supabase.js             # Inicialização do cliente Supabase
+│       ├── middlewares/
+│       │   └── auth.js                 # Middleware de validação JWT e extração de Tenant
+│       ├── controllers/
+│       │   ├── authController.js       # Registro e login com tenantId
+│       │   └── documentController.js   # URLs assinadas, isolamento, LGPD e Glacier
+│       ├── routes/
+│       │   ├── authRoutes.js           # /api/auth (register, login, me)
+│       │   └── documentRoutes.js       # /api/documents (CRUD e simulações)
+│       └── app.js                      # Configuração do Express e Health Check
+└── frontend/                       # Interface do Usuário (React + Vite)
+│       ├── src/
+│       ├── App.jsx                 # Dashboard unificado e Lógica de Upload Direto
+│       └── main.jsx                # Entrypoint do React
+│       ├── index.html                  # Template HTML
+│       └── package.json                # Dependências do front-end
 ├── .env                            # Variáveis de ambiente
 ├── package.json                    # Scripts e dependências
 ├── server.js                       # Entrypoint HTTP com Graceful Shutdown
@@ -42,6 +49,7 @@ docs-saas-backend/
 ---
 
 ## 🚀 Como Executar
+Para que a aplicação funcione corretamente, você precisará rodar o Servidor (Backend) e a Interface (Frontend) em terminais separados.
 
 ### 1. Instalação das Dependências
 ```bash
@@ -51,13 +59,20 @@ npm install
 ### 2. Configurar o Banco de Dados
 Abra o **SQL Editor** no painel do Supabase e execute o arquivo `supabase_schema.sql`.
 
-### 3. Rodar o Servidor
+### 3. Rodar o Servidor (Terminal 1)
 ```bash
 npm run dev
 ```
 Servidor disponível em: `http://localhost:3000`  
 Health check em: `http://localhost:3000/health`
 
+### 4. Rodar o Frontend (Terminal 2)
+Abra um novo terminal na pasta do frontend, instale as dependências e inicie o React:
+```bash
+npm install
+npm run dev
+```
+Aplicação disponível em: http://localhost:5173 (ou a porta indicada pelo Vite).
 ---
 
 ## 🧪 Testes Automatizados E2E (Comprovação para a Banca)
