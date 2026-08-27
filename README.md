@@ -35,10 +35,10 @@ docs-saas/
 │       └── app.js                      # Configuração do Express e Health Check
 └── frontend/                       # Interface do Usuário (React + Vite)
 │       ├── src/
-│       ├── App.jsx                 # Dashboard unificado e Lógica de Upload Direto
-│       └── main.jsx                # Entrypoint do React
-│       ├── index.html                  # Template HTML
-│       └── package.json                # Dependências do front-end
+│           ├── App.jsx                 # Dashboard unificado e Lógica de Upload Direto
+│           └── main.jsx                # Entrypoint do React
+│           ├── index.html                  # Template HTML
+│           └── package.json                # Dependências do front-end
 ├── .env                            # Variáveis de ambiente
 ├── package.json                    # Scripts e dependências
 ├── server.js                       # Entrypoint HTTP com Graceful Shutdown
